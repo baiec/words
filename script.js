@@ -17,14 +17,6 @@ var pubnub = PUBNUB.init({
     "use strict";
     $("#startModal").modal({keyboard:false,backdrop:"static"}); //removes ability to close modal
     $("#startModal").modal("show");
-    pubnub.subscribe({
-		channel: gameChannel,
-		presence: presence,
-		message: handleMessage,
-		state: {
-			inGame:false
-		}
-	});
 }());
 
 var gameChannel = "testChannel5";
@@ -368,6 +360,7 @@ startGame.click(function(){
 	var vowels = generateRandomLetters(vowelArray, 3);
 	var consonants = generateRandomLetters(consonantArray, 4);
     $("#wordArea").empty();
+    error.text("");
 	inGame = true;
 	//start timer
 	pub("letters",[vowels, consonants]);
@@ -389,7 +382,7 @@ startGame.click(function(){
 
 endGame.click(function(){ //will make all players end game
 	"use strict";
-	if (inGame)
+	if (inGame) {
 		confirmWord.html('');
 	    
 		inGame = false;
@@ -402,6 +395,9 @@ endGame.click(function(){ //will make all players end game
 		});
 		pub("endGameChannel",[$("#usernameInput").val(),getLetterAmount(),words]); //[username,integer,[words]]
 	    submittedWordsArray.length = 0;
+	    error.text("");
+	} else {
+		error.text("You can't end a game that hasn't begun");
 	}
 });
 
@@ -496,14 +492,14 @@ chatBtn.click(function(){
     pubChatMsg();
 });
 
-/*pubnub.subscribe({
+pubnub.subscribe({
 	channel: gameChannel,
 	presence: presence,
 	message: handleMessage,
 	state: {
 		inGame:false
 	}
-}); //"normal" (presence and chat)*/
+}); //"normal" (presence and chat)
 
 
 pubnub.subscribe({
