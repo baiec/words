@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding-top: 20px;
+  border: none;
+  border-radius: 0;
+  color: white;
+  background: #333;
+  font-size: 20px;
+  transition: .3s ease;
+}
+input:valid ~ label {
+  top: 0;
+  font: 700 12px Roboto;
+  color: rgba(255, 255, 255, 0.5);
+}
+input:focus {
+  outline: none;
+}
+input:focus ~ label {
+  top: 0;
+  font: 700 12px Roboto;
+  color: #2196f3;
+}
+input:focus ~ .bar:before {
+  transform: translateX(0);
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #333 inset;
+  -webkit-text-fill-color: white !important;
+}
+
+.bar {
+  background: rgba(255, 255, 255, 0.5);
+  content: '';
+  width: 300px;
+  height: 2px;
+  transition: .3s ease;
+  position: relative;
+}
+.bar:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 150%;
+  background: #2196f3;
+  transform: translateX(-100%);
+}
+
+::selection {
+  background: rgba(33, 150, 243, 0.3);
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Word Game</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div id="chatModal" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="noOfPlayers"></h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12"><ul id="chatUl"></ul></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"> <input id="chatInput" type="text" placeholder="Type message here..."> </div>
+                    <div class="col-md-2 col-md-offset-2"><button type="button" id="publishMessageBtn" class="btn btn-primary">Post</button></div>
+                </div>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div id="startModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Welcome!</h4>
+                    </div>
+                    <div class="modal-body row">
+                        <div class="col-md-2 centerAlignContents"> <h4>Username?</h4> <input type="text" id="usernameInput"> </div>
+                        <!--<div class="col-md-2 centerAlignContents"> <h4>Channel?</h4> <input type="text" id="channelInput"> </div>-->
+        	        <!--<div class="col-md-2"> <p>Channel Name?</p> <input type="text" id="channelInput"></div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <p id="startModalError"></p>
+                        <button id="enterLobby" type="button" class="btn btn-warning btn-lg">Join</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    	<div id="letterDisplay" class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div class="row centerAlignContents" id="letterRow"></div>
+            </div>
+        </div>
+        
+        <div id="wordArea" class="row"></div>
+        
+        <div id="submitDiv" class="row">
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-4 centerAlignContents">
+                    <p id="word"></p>
+                </div>
+                <div class="col-sm-2 centerAlignContents">
+                    <button id="confirmBtn" class="btn btn-warning btn-lg">submit</button>
+                </div>
+            </div>
+            <div class="row centerAlignContents">
+                <div class="col-md-2 col-md-offset-5">   <p id="error" class="centerAlignContents"></p> </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 buttonz">
+                    <div class="col-md-4 col-sm-4 centerAlignContents"><button id="startGame" class="btn btn-warning btn-lg">start</button></div>
+                    <div class="col-md-4 col-sm-4 centerAlignContents"><button id="openChat" data-toggle="modal" data-target="#chatModal" class="btn btn-warning btn-lg">chat</button></div>
+                    <div class="col-md-4 col-sm-4 centerAlignContents"><button id="endGame" class="btn btn-warning btn-lg">end</button></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+	<!--Jquery-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.color-animation/1/mainfile"></script>
+    <!--Boostrap-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">    </script>
+	<!--Pubnub-->
+	<script src="http://cdn.pubnub.com/pubnub-3.14.0.min.js"></script>
+	<!--My Code-->
+    <script src="words.js"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>
